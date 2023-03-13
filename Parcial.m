@@ -2,7 +2,7 @@
 % sanos 2 Verde
 % inmunes 3 Azul
 % muertos 0 Negro
-
+clear;
 #Entradas
 population = round(sqrt(input("Ingrese el tamaño de la poblacion: ")));
 infected = input("Ingrese la cantidad de infectados: ");
@@ -44,6 +44,10 @@ endwhile
 
 
 for w = 1:cicle
+  healthyV(w)=healthy;
+  sickV(w)=sick;
+  inmuneV(w)=immune;
+  deadV(w)= dead;
   if(w ==1)
     imshow(matrixColors);
     title({'Parcial sistemas dinamicos','Numero de generacion: ',0,healthy,'Enfermos: ',sick, 'Inmunes: ',immune, 'Muertos: ', dead},"fontsize",30);
@@ -57,3 +61,13 @@ for w = 1:cicle
 
  endfor
 
+plot(sickV)
+hold on
+plot(healthyV)
+hold on
+plot(inmuneV)
+hold on
+plot(deadV)
+xlabel ("Generaciones");
+ylabel ("Individuos");
+legend ("Enfernos", "Sanos","Inmunes","Muertos");
