@@ -1,6 +1,7 @@
 
 function number = Probability(probability)
-  if(roll(100)<=probability)
+  x = randi(100);
+  if(x<probability)
     number = true;
    else
     number = false;
