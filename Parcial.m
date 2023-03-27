@@ -1,7 +1,7 @@
-% enfermos 1 Rojo
-% sanos 2 Verde
-% inmunes 3 Azul
-% muertos 0 Negro
+# enfermos 1 Rojo
+# sanos 2 Verde
+# inmunes 3 Azul
+# muertos 0 Negro
 clear;
 #Entradas
 population = round(sqrt(input("Ingrese el tamaño de la poblacion: ")));
@@ -57,7 +57,7 @@ for w = 1:cicle
   imshow(matrixColors);
   title({'Parcial sistemas dinamicos','Numero de generacion: ',w,'Sanos: ',healthy,'Enfermos: ',sick, 'Inmunes: ',immune, 'Muertos: ', dead},"fontsize",30);
   pause(0.5);
-  #disp(matrixOne);
+
 
  endfor
 
