@@ -1,5 +1,6 @@
 function disease = calculateDisease(a,b,c,d)
   number = 0;
+  #probabilidad_enfermo =
   if(a == 1)
     number = number + 20+randi(5);
   endif
