@@ -54,6 +54,14 @@ x = double(entrada');
 % Columna 2: Datos del comportamiento del horno
 y = double(datos');
 
+[C,L] = Lagrange(x,y);
+y1 = polyval(C,x);
+plot(x,y,'b','linewidth',2)
+hold on
+plot(x,y1,'m','linewidth',2)
+grid on
+hold off
+
 plot(y)
 
 % Obtencion de los coeficientes de la ecuación en diferencias supuesta del modelo por medio de
@@ -66,13 +74,9 @@ Y = y(3:length(y));
 
 Coeficientes=inv(EcD'*EcD)*EcD'*Y
 
-
 c1 = Coeficientes(1);
-
 c2 = Coeficientes(2);
-
 c3 = Coeficientes(3);
-
 c4 = Coeficientes(4);
 
 
