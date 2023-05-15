@@ -13,7 +13,7 @@ function disease = calculateDisease(a,b,c,d)
   if(d == 1)
     number = number + 20+randi(5);
   endif
-  if(25<=number)
+  if(35<=number)
     disease = true;
   else
     disease = false;
