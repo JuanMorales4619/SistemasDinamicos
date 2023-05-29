@@ -6,5 +6,3 @@ Se toma el sistema dinamico de dos motores conectados donde la velocidad del pri
 
 
 
-### Referencia
-- https://www.youtube.com/watch?v=KHqRT2A_qi4
