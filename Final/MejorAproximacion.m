@@ -1,12 +1,3 @@
-%%Si nunca se ha conectado el arduino a octave:
-%%arduinosetup  %%Se descarga la conf al arduino, Esto es sólo la primera vez
-%%Si ya se descargo el arduinosetup la primer vez que se inicia el programa se
-%%debe teclear
-%pkg load arduino
-%a=arduino;
-%%Luego de eso el programa se puede ejecutar varias veces sin problema.
-
-% Columna 1: Datos de entrada al horno
 x = [0
 1/4
 1/2
@@ -503,73 +494,18 @@ y = [286
 11
 126];
 
-plot(y)
-
-% Obtencion de los coeficientes de la ecuación en diferencias supuesta del modelo por medio de
-% mínimos cuadrados (Amstrom, p513)
-
-
-EcD = [-1*y(2:length(y)-1) -1*y(1:length(y)-2) -1*y(3:length(y)) x(2:length(y)-1) x(1:length(y)-2) x(3:length(y))];  %238
-% -1*y(1:length(y)-3) x(1:length(y)-3)
-Y = y(3:length(y));
-
-
-Coeficientes=inv(EcD'*EcD)*EcD'*Y
-
-c1 = Coeficientes(1);
-c2 = Coeficientes(2);
-c3 = Coeficientes(3);
-c4 = Coeficientes(4);
-c5 = Coeficientes(5);
-c6 = Coeficientes(6);
-
-
-w=y;
-
-
-for i = 3:length(y)
-   w(i) = -c1*w(i-1) - c2*w(i-2) - c3*w(i) + c4*x(i-1) + c5*x(i-2) + c6*x(i);
-end
-
-
-%plot(Ts)
-
-xlabel("Número de ciclos")
-
-ylabel("Periodo de muestreo")
-
-
-%plot(entrada)
-
-xlabel("Tiempo")
-
-ylabel("Entrada")
-
-figure
-
-plot (y) % Comportamiento real
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-hold on
-
-plot (w,'m--') % Comportamiento proyectado con Ecuacion en diferencias
-
-
-legend("Real","Modelo")
-
-xlabel("Tiempo")
-
-ylabel("Salida")
-
-title("Sistema real vs Avatar")
-
-hold off
-
-grid on
-
-disp('Error cuadrático medio del sistema:')
-
-E=(sum((w-y).^2))/length(y)%%length(y) es el número de datos, este es el error cuadrático medio
+x = x';
+y = y';
+pos = 1;
+p = length(x);
+l=ones(1,p);
+for t=1:p
+   for s=1:p
+     if s~=t
+       l(t)=l(t)*(pos-x(s))/(x(t)-x(s));
+     endif
+   endfor
+endfor
+fn=dot(l,x);
 
 
