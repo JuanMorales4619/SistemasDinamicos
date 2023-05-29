@@ -509,7 +509,7 @@ plot(y)
 % mínimos cuadrados (Amstrom, p513)
 
 
-EcD = [-1*y(2:length(y)-1) -1*y(1:length(y)-2) x(2:length(y)-1) x(1:length(y)-2)];
+EcD = [-1*y(2:length(y)-1) -1*y(1:length(y)-2) -1*y(3:length(y)) x(2:length(y)-1) x(1:length(y)-2) x(3:length(y))];  %238
 % -1*y(1:length(y)-3) x(1:length(y)-3)
 Y = y(3:length(y));
 
@@ -520,30 +520,26 @@ c1 = Coeficientes(1);
 c2 = Coeficientes(2);
 c3 = Coeficientes(3);
 c4 = Coeficientes(4);
-%c5 = Coeficientes(5);
-%c6 = Coeficientes(6);
+c5 = Coeficientes(5);
+c6 = Coeficientes(6);
 
 
-%%%%% Comentar para la realimentación
 w=y;
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 
 for i = 3:length(y)
-   w(i) = -c1*w(i-1) - c2*w(i-2) + c3*x(i-1) + c4*x(i-2); %%Poner mucho cuidado para no modificar esta línea de código
+   w(i) = -c1*w(i-1) - c2*w(i-2) - c3*w(i) + c4*x(i-1) + c5*x(i-2) + c6*x(i);
 end
-% - c3*w(i-3) + c6*x(i-3)
-%%%%% Comentar para la realimentación
 
-plot(Ts)
+
+%plot(Ts)
 
 xlabel("Número de ciclos")
 
 ylabel("Periodo de muestreo")
 
 
-plot(entrada)
+%plot(entrada)
 
 xlabel("Tiempo")
 
